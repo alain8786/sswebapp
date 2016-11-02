@@ -1,0 +1,70 @@
+<template name="basicInfo">
+
+    <form class="form-inline">
+
+         <!--Control No.-->
+        <div class="form-group">
+            <label for="controlNo">Control No.: SS16569023</label>
+        </div>
+
+        <!--Job Position Applied-->
+        <div class="dropdown">
+            <label for="">Position Applied for: </label>
+            <button class="btn btn-default dropdown-toggle" type="button"
+                    id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Sous Chef
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Chef</a></li>
+                <li><a href="#">Engineer</a></li>
+                <li><a href="#">Waiter</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+
+        <!--Date Applied-->
+
+        <div class="form-group">
+            <label for="lblDateApplied">Date</label>
+            <div class="input-group dateApplied">
+                <input name="idInput" id="idInput" class="form-control" type="text"/>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+
+        <!--Last Name-->
+        <div class="form-group">
+            <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+            <div class="col-md-5">
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+            </div>
+        </div>
+
+        <!-- First Name -->
+        <div class="form-group">
+            <label for="firstName" class="col-sm-2 control-label">First Name</label>
+            <div class="col-md-5">
+                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+            </div>
+        </div>
+
+        <!--Middle Name-->
+        <div class="form-group">
+            <label for="middleName" class="col-sm-2 control-label">Middle Name</label>
+            <div class="col-md-5">
+                <input type="text" class="form-control" id="middleName" placeholder="Middle Name">
+            </div>
+        </div>
+
+    </form>
+
+</template>
+
+<template name="personalBackground">
+
+</template>
