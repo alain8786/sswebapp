@@ -24,3 +24,8 @@ iron:router
 twbs:bootstrap
 tsega:bootstrap3-datetimepicker
 momentjs:moment
+aldeed:autoform
+rajit:bootstrap3-datepicker
+aldeed:autoform-bs-datepicker
+aldeed:autoform-bs-datetimepicker
+aldeed:collection2
