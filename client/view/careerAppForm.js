@@ -127,3 +127,73 @@ StudentData.attachSchema(new SimpleSchema({
         }
     }
 }));
+
+basicInfo ="BasicInfo";
+BasicInfo = new Mongo.Collection(basicInfo);
+BasicInfo.attachSchema(new SimpleSchema({
+    controlNo: {
+        label: "Control No.",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    jobPositionApplied: {
+        label: "Position Applied For",
+        type: [String],
+        allowedValues: ['Chef','Waiter','Engineer'],
+        autoform: {
+            group: basicInfo,
+            type: 'select'
+        }
+    },
+
+    dateApplied: {
+        label: "Date Applied",
+        type: Date,
+        autoform: {
+            group: basicInfo,
+            type: 'date'
+        }
+    },
+
+    lastName: {
+        label: "Last Name",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    firstName: {
+        label: "First Name",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    middleName: {
+        label: "Middle Name",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    referral: {
+        label: "How did you know about us?",
+        type: [String],
+        allowedValues: ['Facebook', 'Word of Mouth', 'Referred by a friend'],
+        autoform: {
+            group: basicInfo,
+            type: 'select'
+        }
+    }
+
+}));
