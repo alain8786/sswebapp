@@ -2,6 +2,18 @@
  * Created by Alain on 01/11/2016.
  */
 
+Router.route('/', {
+    name: 'home',
+    template: 'pB'
+});
+
+Router.route('/books', {
+    template: 'insertBookForm'
+});
+
+Router.route('/careers',{
+   template: 'careerAppForm'
+});
 
 Template.basicInfo.onRendered(function() {
 
@@ -16,12 +28,27 @@ Template.basicInfo.events({
        posApplied = event.target.text;
        console.log(event.target.text);
     }
+
 });
 
 Template.basicInfo.helpers({
    posApplied(text){
        return text;
    }
+});
+
+Template.pB.helpers({
+   listOfJobPositions: function () {
+       return ["Chef","Waiter","Engineer"];
+       //return "Chef";
+   }
+});
+
+Template.pB.events({
+    'submit .form-horizontal'(event){
+        event.preventDefault();
+        Router.go('books');
+    }
 });
 
 Books = new Mongo.Collection("books");
@@ -142,7 +169,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     jobPositionApplied: {
         label: "Position Applied For",
-        type: [String],
+        type: String,
         allowedValues: ['Chef','Waiter','Engineer'],
         autoform: {
             group: basicInfo,
@@ -194,6 +221,171 @@ BasicInfo.attachSchema(new SimpleSchema({
             group: basicInfo,
             type: 'select'
         }
+    },
+
+    /***
+     *
+     * Personal Background
+     *
+     */
+
+    age: {
+        label: "Age",
+        type: Number,
+        autoform: {
+            group: basicInfo,
+            type: 'select'
+        }
+    },
+
+    dateOfBirth: {
+        label: "Date of Birth",
+        type: Date,
+        autoform: {
+            group: basicInfo,
+            type: 'date'
+        }
+    },
+
+    placeOfBirth: {
+        label: "Place of Birth",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    civilStatus: {
+        label: "Civil Status",
+        type: [String],
+        autoform: {
+            group: basicInfo,
+            type: 'select'
+        }
+    },
+
+    height: {
+        label: "Height",
+        type: Number,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    weight: {
+        label: "Weight",
+        type: Number,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    gender: {
+        label: "Gender",
+        type: [String],
+        autoform: {
+            group: basicInfo,
+            type: 'select'
+        }
+    },
+
+    email: {
+        label: "Email",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    cityAddress: {
+        label: "City Address",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    zipCode: {
+        label: "Zip Code",
+        type: Number,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    telNo: {
+        label: "Tel. No.",
+        type: Number,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    sssNo: {
+        label: "SSS No.",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    pagibig: {
+        label: "Pag-Ibig",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    philhealth: {
+        label: "Philhealth",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    nbi: {
+        label: "NBI",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    dateIssued: {
+        label: "Date Issued",
+        type: Date,
+        autoform: {
+            group: basicInfo,
+            type: 'date'
+        }
     }
+
+    /***
+     *
+     * Educational Background
+     *
+     */
+
+
+
+    /***
+     *
+     * Past Employment
+     *
+     */
+
 
 }));

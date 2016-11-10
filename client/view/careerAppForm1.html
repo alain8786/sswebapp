@@ -80,12 +80,6 @@
 
 </template>
 
-<template name="personalBackground">
-    <div class="panel panel-primary">
-
-    </div>
-</template>
-
 <template name="insertBookForm">
     {{> quickForm collection="Books" id="insertBookForm" type="insert"}}
 </template>
@@ -99,9 +93,78 @@
                 input-col-class="col-sm-10"
 
                 id="AddStudentDataForm"
-                type="method"
-                meteormethod="addStudentData"
-                resetOnSuccess=true
+
         }}
     </div>
+</template>
+
+<template name="careerAppForm">
+
+        {{#autoForm id="afCareer" type=formType collection="BasicInfo"}}
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    {{> afQuickField name="controlNo"}}
+                    {{> afQuickField name="jobPositionApplied" options=listOfJobPositions}}
+                    {{> afQuickField name="dateApplied"}}
+                    {{> afQuickField name="lastName"}}
+                    {{> afQuickField name="firstName"}}
+                    {{> afQuickField name="middleName"}}
+                    {{> afQuickField name="referral"}}
+                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                </div>
+                <div class="panel-heading">
+                    <h1 class="panel-title">Personal Background</h1>
+                </div>
+                <div class="panel-body">
+                    {{> afQuickField name="age"}}
+                    {{> afQuickField name="dateOfBirth"}}
+                    {{> afQuickField name="civilStatus"}}
+                    {{> afQuickField name="height"}}
+                    {{> afQuickField name="weight"}}
+                    {{> afQuickField name="gender"}}
+                    {{> afQuickField name="email"}}
+                    {{> afQuickField name="cityAddress"}}
+                    {{> afQuickField name="zipCode"}}
+                    {{> afQuickField name="telNo"}}
+                    {{> afQuickField name="sssNo"}}
+                    {{> afQuickField name="pagibig"}}
+                    {{> afQuickField name="philhealth"}}
+                    {{> afQuickField name="nbi"}}
+                    {{> afQuickField name="dateIssued"}}
+                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+                </div>
+            </div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name of School/Institution</th>
+                        <th>Course Taken</th>
+                        <th>Period</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>High School</td>
+                        <td>BS Computer Science</td>
+                        <td>2004-2006</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>College</td>
+                        <td>BS Computer Science</td>
+                        <td>2004-2006</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Graduate</td>
+                        <td>BS Computer Science</td>
+                        <td>2004-2006</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        {{/autoForm}}
+
 </template>
