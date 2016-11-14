@@ -4,7 +4,7 @@
 
 Router.route('/', {
     name: 'home',
-    template: 'pB'
+    template: 'cA'
 });
 
 Router.route('/books', {
@@ -37,18 +37,19 @@ Template.basicInfo.helpers({
    }
 });
 
-Template.pB.helpers({
-   listOfJobPositions: function () {
-       return ["Chef","Waiter","Engineer"];
-       //return "Chef";
-   }
+Template.careerAppForm.helpers({
+
 });
 
-Template.pB.events({
+Template.careerAppForm.events({
     'submit .form-horizontal'(event){
         event.preventDefault();
         Router.go('books');
     }
+});
+
+AutoForm.hooks({
+
 });
 
 Books = new Mongo.Collection("books");
@@ -371,7 +372,8 @@ BasicInfo.attachSchema(new SimpleSchema({
             group: basicInfo,
             type: 'date'
         }
-    }
+    },
+
 
     /***
      *
@@ -386,6 +388,96 @@ BasicInfo.attachSchema(new SimpleSchema({
      * Past Employment
      *
      */
+
+    /***
+     *
+     * Licenses
+     *
+     */
+
+    /***
+     *
+     * Visa Information
+     *
+     */
+
+    embassy: {
+        label: "Have you ever been denied any VISA Applications? If yes, please indicate which Embassy and date of application",
+        type: [String],
+        autoform: {
+            group: basicInfo,
+            type: 'select'
+        }
+    },
+
+    dateOfVisaApplication: {
+        label: "Date of Application",
+        type: Date,
+        autoform: {
+            group: basicInfo,
+            type: 'date'
+        }
+    },
+
+    countryPetitioned: {
+        label: "Have you ever been petitioned before? if yes which country?",
+        type: [String],
+        autoform: {
+            group: basicInfo,
+            type: 'select'
+        }
+    },
+
+
+    /***
+     *
+     * Training Certificate
+     *
+     */
+
+    /***
+     *
+     * Family Information
+     *
+     */
+
+    spouseName: {
+        label: "Name of spouse",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    spouseDOB: {
+        label: "Birthdate",
+        type: Date,
+        autoform: {
+            group: basicInfo,
+            type: 'date'
+        }
+
+    },
+
+    spouseAddress: {
+        label: "Address",
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+    spouseContactNo: {
+        label: "Contact No",
+        type: Number,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    }
+
 
 
 }));
