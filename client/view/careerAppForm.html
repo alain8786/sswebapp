@@ -103,24 +103,24 @@
             <div class="panel panel-primary">
                 <div class="panel-body">
                     {{> afQuickField name="controlNo"}}
-                    {{> afQuickField name="jobPositionApplied" options=listOfJobPositions}}
+                    {{> afQuickField name="jobPositionApplied" options=jobPositionOptions}}
                     {{> afQuickField name="dateApplied"}}
                     {{> afQuickField name="lastName"}}
                     {{> afQuickField name="firstName"}}
                     {{> afQuickField name="middleName"}}
-                    {{> afQuickField name="referral"}}
+                    {{> afQuickField name="referral" options=referralOptions}}
                     <!--<button type="submit" class="btn btn-primary">Submit</button>-->
                 </div>
                 <div class="panel-heading">
                     <h1 class="panel-title"><strong>Personal Background</strong></h1>
                 </div>
                 <div class="panel-body">
-                    {{> afQuickField name="age"}}
+                    {{> afQuickField name="age" options=ageOptions}}
                     {{> afQuickField name="dateOfBirth"}}
-                    {{> afQuickField name="civilStatus"}}
+                    {{> afQuickField name="civilStatus" options=civilStatusOptions}}
                     {{> afQuickField name="height"}}
                     {{> afQuickField name="weight"}}
-                    {{> afQuickField name="gender"}}
+                    {{> afQuickField name="gender" options=genderOptions}}
                     {{> afQuickField name="email"}}
                     {{> afQuickField name="cityAddress"}}
                     {{> afQuickField name="zipCode"}}
@@ -149,21 +149,21 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>High School</td>
-                                <td>BS Computer Science</td>
-                                <td>2004-2006</td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>College</td>
-                                <td>BS Computer Science</td>
-                                <td>2004-2006</td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Graduate</td>
-                                <td>BS Computer Science</td>
-                                <td>2004-2006</td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
                             </tr>
                         </tbody>
                     </table>
@@ -190,7 +190,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Hello</td>
+                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
                             <td>Hello</td>
                             <td>Hello</td>
                             <td>Hello</td>
@@ -367,14 +367,63 @@
                     <h1 class="panel-title">Family Information</h1>
                 </div>
                 <div class="panel-body">
-                    {{> afQuickField name="spouseName"}}
-                    {{> afQuickField name="spouseDOB"}}
-                    {{> afQuickField name="spouseAddress"}}
-                    {{> afQuickField name="spouseContactNo"}}
+                    {{> afQuickField name="spouse"}}
+                    {{> afQuickField name="child"}}
+                    {{> afQuickField name="father"}}
+                    {{> afQuickField name="mother"}}
+                    {{> afQuickField name="beneficiary"}}
+                    {{> afQuickField name="contactPerson"}}
 
                     <!--<button class="btn btn-primary">Add more visa</button>-->
                 </div>
 
+                <div class="panel-heading">
+                    <h1 class="panel-title">Medical History</h1>
+                </div>
+                <div class="panel-body">
+                    {{> afQuickField name="bRepatriated" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bRepatriated" value="yes"}}
+                        {{> afQuickField name="repatriated"}}
+                    {{/if}}
+                    {{> afQuickField name="bSurgery" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bSurgery" value="yes"}}
+                        {{> afQuickField name="surgery"}}
+                    {{/if}}
+                    {{> afQuickField name="illness" options="allowed" noselect=true type="select-checkbox-inline"}}
+                    {{> afQuickField name="bDrugProblem" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bDrugProblem" value="yes"}}
+                        {{> afQuickField name="drugProblem"}}
+                    {{/if}}
+                    {{> afQuickField name="bAlcoholProblem" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bAlcoholProblem" value="yes"}}
+                        {{> afQuickField name="alcoholProblem"}}
+                    {{/if}}
+                    {{> afQuickField name="bSmoke" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bSmoke" value="yes"}}
+                        {{> afQuickField name="smoke"}}
+                    {{/if}}
+                    {{> afQuickField name="bSkinAllergies" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bSkinAllergies" value="yes"}}
+                        {{> afQuickField name="skinAllergies"}}
+                    {{/if}}
+                    {{> afQuickField name="bSkinDisease" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bSkinDisease" value="yes"}}
+                        {{> afQuickField name="skinDisease"}}
+                    {{/if}}
+                    {{> afQuickField name="bTattoo" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bTattoo" value="yes"}}
+                        {{> afQuickField name="tattoo"}}
+                    {{/if}}
+                </div>
+
+                <div class="panel-heading">
+                    <h1 class="panel-title">Character References</h1>
+                    <small>List down 3 persons as character references (non-related)</small>
+                </div>
+                {{> afQuickField name="characterRef"}}
+
+
+                    <!--<button class="btn btn-primary">Add more visa</button>-->
 
             </div>
         {{/autoForm}}

@@ -25,7 +25,7 @@ Template.basicInfo.onRendered(function() {
 
 Template.basicInfo.events({
    'click .selItem'(event){
-       posApplied = event.target.text;
+       var posApplied = event.target.text;
        console.log(event.target.text);
     }
 
@@ -37,15 +37,98 @@ Template.basicInfo.helpers({
    }
 });
 
-Template.careerAppForm.helpers({
-
-});
-
 Template.careerAppForm.events({
     'submit .form-horizontal'(event){
         event.preventDefault();
         Router.go('books');
     }
+});
+
+Template.cA.helpers({
+    jobPositionOptions: function(){
+        return [
+            {label: "Chef", value: "Chef"},
+            {label: "Waiter", value: "Waiter"},
+            {label: "Engineer", value: "Engineer"}
+        ];
+    },
+
+    referralOptions: function () {
+        return [
+            {label: "Facebook", value: "Facebook"},
+            {label: "Word of Mouth", value: "Word of Mouth"}
+        ];
+    },
+
+    ageOptions: function () {
+        return {
+            18: "18",
+            19: "19",
+            20: "20",
+            21: "21",
+            22: "22",
+            23: "23",
+            24: "24",
+            25: "25",
+            26: "26",
+            27: "27",
+            28: "28",
+            29: "29",
+            30: "30",
+            31: "31",
+            32: "32",
+            34: "34",
+            35: "35",
+            36: "36",
+            37: "37",
+            38: "38",
+            39: "39",
+            40: "40",
+            41: "41",
+            42: "42",
+            43: "43",
+            44: "44",
+            45: "45",
+            46: "46",
+            47: "47",
+            48: "48",
+            49: "49",
+            50: "50",
+            51: "51",
+            52: "52",
+            53: "53",
+            54: "54",
+            55: "55",
+            56: "56",
+            57: "57",
+            58: "58",
+            59: "59",
+            60: "60",
+            61: "61",
+            62: "62",
+            63: "63",
+            64: "64",
+            65: "65"
+        }
+    },
+
+    civilStatusOptions: function () {
+        return [
+            {label: "Single", value: "Single"},
+            {label: "Married", value: "Married"},
+            {label: "Widowed", value: "Widowed"},
+            {label: "Separated", value: "Separated"},
+            {label: "Divorced", value: "Divorced"}
+        ];
+    },
+
+    genderOptions: function () {
+        return [
+            {label: "Male", value: "Male"},
+            {label: "Female", value: "Female"}
+        ];
+    }
+
 });
 
 AutoForm.hooks({
@@ -216,7 +299,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     referral: {
         label: "How did you know about us?",
-        type: [String],
+        type: String,
         allowedValues: ['Facebook', 'Word of Mouth', 'Referred by a friend'],
         autoform: {
             group: basicInfo,
@@ -259,7 +342,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     civilStatus: {
         label: "Civil Status",
-        type: [String],
+        type: String,
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -403,7 +486,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     embassy: {
         label: "Have you ever been denied any VISA Applications? If yes, please indicate which Embassy and date of application",
-        type: [String],
+        type: String,
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -421,7 +504,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     countryPetitioned: {
         label: "Have you ever been petitioned before? if yes which country?",
-        type: [String],
+        type: String,
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -441,7 +524,7 @@ BasicInfo.attachSchema(new SimpleSchema({
      *
      */
 
-    spouseName: {
+    "spouse.name": {
         label: "Name of spouse",
         type: String,
         autoform: {
@@ -450,7 +533,7 @@ BasicInfo.attachSchema(new SimpleSchema({
         }
     },
 
-    spouseDOB: {
+    "spouse.DOB": {
         label: "Birthdate",
         type: Date,
         autoform: {
@@ -460,7 +543,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     },
 
-    spouseAddress: {
+    "spouse.address": {
         label: "Address",
         type: String,
         autoform: {
@@ -469,15 +552,248 @@ BasicInfo.attachSchema(new SimpleSchema({
         }
     },
 
-    spouseContactNo: {
+    "spouse.contactNo": {
         label: "Contact No",
         type: Number,
         autoform: {
             group: basicInfo,
             type: 'text'
         }
-    }
+    },
 
+    placeholder: {
+        type: String,
+        autoform: {
+            group: basicInfo,
+            type: 'text'
+        }
+    },
+
+
+    child: {
+        label: "Children",
+        type: Array,
+        optional: true,
+        minCount: 0,
+        maxCount: 20
+    },
+
+    "child.$": {
+        type: Object
+    },
+
+    "child.$.name": {
+        label: "Name",
+        type: String
+    },
+
+    "child.$.DOB": {
+        label: "Date of Birth",
+        type: Date
+    },
+
+    "father.name": {
+        label: "Name",
+        type: String
+    },
+
+    "father.DOB": {
+        label: "Birthdate",
+        type: Date
+    },
+
+    "father.POB": {
+        label: "Birthplace",
+        type: String
+    },
+
+    "mother.name": {
+        label: "Name",
+        type: String
+    },
+
+    "mother.DOB": {
+        label: "Birthdate",
+        type: Date
+    },
+
+    "mother.POB": {
+        label: "Birthplace",
+        type: String
+    },
+
+    "beneficiary.name": {
+        label: "Name",
+        type: String
+    },
+
+    "beneficiary.DOB": {
+        label: "Birthdate",
+        type: Date
+    },
+
+    "beneficiary.address": {
+        label: "Address",
+        type: String
+    },
+
+    "beneficiary.contactNo": {
+        label: "Contact No",
+        type: Number
+    },
+
+    "contactPerson.name": {
+        label: "Name",
+        type: String
+    },
+
+    "contactPerson.relationship": {
+        label: "Relationship",
+        type: String
+    },
+
+    "contactPerson.address": {
+        label: "Address",
+        type: String
+    },
+
+    "contactPerson.contactNo": {
+        label: "Contact No",
+        type: Number
+    },
+
+    /***
+     *
+     * Medical History
+     *
+     */
+
+    bRepatriated: {
+        label: "Have you ever been repatriated before?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    repatriated: {
+        label: "state reason",
+        type: String
+    },
+
+    bSurgery: {
+        label: "Any previous surgery?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    surgery: {
+        label: "please describe",
+        type: String
+    },
+
+    illness: {
+        label: "Any previous illness?",
+        type: [String],
+        allowedValues: ['Diabetes', 'Cancer', 'Back Pain', 'Stroke', 'Hypertension', 'Others']
+    },
+
+    bDrugProblem: {
+        label: "Any drug problem?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    drugProblem: {
+        label: "please describe",
+        type: String
+    },
+
+    bAlcoholProblem: {
+        label: "Any alcohol problem?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+
+    alcoholProblem: {
+        label: "how often and how much?",
+        type: String
+    },
+
+    bSmoke: {
+        label: "Do you smoke?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+    smoke: {
+        label: "how many sticks a day?",
+        type: String
+    },
+
+    bSkinAllergies: {
+        label: "Do you have skin allergies?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    skinAllergies: {
+        label: "please describe",
+        type: String
+    },
+
+    bSkinDisease: {
+        label: "Have you ever been treated with skin disease?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    skinDisease: {
+        label: "please describe",
+        type: String
+    },
+
+    bTattoo: {
+        label: "Do you have any visible tattoo?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    tattoo: {
+        label: "please describe",
+        type: String
+    },
+
+    /***
+     *
+     * Character References
+     *
+     */
+
+    characterRef: {
+        label: " ",
+        type: Array,
+        optional: false,
+        minCount: 0,
+        maxCount: 5
+    },
+
+    "characterRef.$": {
+      type: Object
+    },
+
+    "characterRef.$.name": {
+        label: "Name",
+        type: String
+    },
+
+    "characterRef.$.address": {
+        label: "Address",
+        type: String
+    },
+
+    "characterRef.$.contactNo": {
+        label: "Contact No",
+        type: String
+    }
 
 
 }));
