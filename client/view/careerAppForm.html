@@ -97,9 +97,8 @@
     </div>
 </template>
 
-<template name="cA">
-
-        {{#autoForm id="afCareer" type=formType collection="BasicInfo"}}
+<template name="careerForm">
+        {{#autoForm id="careerForm" type="normal" collection="BasicInfo"}}
             <div class="panel panel-primary">
                 <div class="panel-body">
                     {{> afQuickField name="controlNo"}}
@@ -130,7 +129,6 @@
                     {{> afQuickField name="philhealth"}}
                     {{> afQuickField name="nbi"}}
                     {{> afQuickField name="dateIssued"}}
-                    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
                 </div>
 
                 <div class="panel-heading">
@@ -318,9 +316,9 @@
                     <h1 class="panel-title">Visa Information</h1>
                 </div>
                 <div class="panel-body">
-                    {{> afQuickField name="embassy"}}
-                    {{> afQuickField name="dateOfVisaApplication"}}
-                    {{> afQuickField name="countryPetitioned"}}
+                    {{> afQuickField name="embassy" options="allowed"}}
+                    {{> afQuickField name="dateOfVisaApplication" }}
+                    {{> afQuickField name="countryPetitioned" options="allowed"}}
                 </div>
 
                 <div class="panel-heading">
@@ -389,7 +387,11 @@
                     {{#if afFieldValueIs name="bSurgery" value="yes"}}
                         {{> afQuickField name="surgery"}}
                     {{/if}}
-                    {{> afQuickField name="illness" options="allowed" noselect=true type="select-checkbox-inline"}}
+                    {{> afQuickField name="bIllness" options="allowed" noselect=true type="select-radio-inline"}}
+                    {{#if afFieldValueIs name="bIllness" value="yes"}}
+                        {{> afQuickField name="illness" options="allowed" noselect=true type="select-checkbox-inline"}}
+                    {{/if}}
+
                     {{> afQuickField name="bDrugProblem" options="allowed" noselect=true type="select-radio-inline"}}
                     {{#if afFieldValueIs name="bDrugProblem" value="yes"}}
                         {{> afQuickField name="drugProblem"}}
@@ -422,9 +424,9 @@
                 </div>
                 {{> afQuickField name="characterRef"}}
 
-
-                    <!--<button class="btn btn-primary">Add more visa</button>-->
-
+                <div style="text-align: center;">
+                    <a class="btn btn-primary" href="{{pathFor route='home'}}" role="button">Submit</a>
+                </div>
             </div>
         {{/autoForm}}
 

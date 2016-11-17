@@ -4,16 +4,17 @@
 
 Router.route('/', {
     name: 'home',
-    template: 'cA'
+    template: 'careerJobList'
 });
 
 Router.route('/books', {
     template: 'insertBookForm'
 });
 
-Router.route('/careers',{
-   template: 'careerAppForm'
+Router.route('/c',{
+    template: 'careerForm'
 });
+
 
 Template.basicInfo.onRendered(function() {
 
@@ -44,7 +45,7 @@ Template.careerAppForm.events({
     }
 });
 
-Template.cA.helpers({
+Template.careerForm.helpers({
     jobPositionOptions: function(){
         return [
             {label: "Chef", value: "Chef"},
@@ -131,7 +132,19 @@ Template.cA.helpers({
 
 });
 
+Template.careerForm.events({
+
+});
+
 AutoForm.hooks({
+    careerForm:{
+        onSubmit: function (insertDoc, updateDoc, currentDoc) {
+            this.done();
+            Router.go('books');
+        }
+
+    }
+    
 
 });
 
@@ -487,6 +500,7 @@ BasicInfo.attachSchema(new SimpleSchema({
     embassy: {
         label: "Have you ever been denied any VISA Applications? If yes, please indicate which Embassy and date of application",
         type: String,
+        allowedValues: ['USA','Korea','Japan'],
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -505,6 +519,7 @@ BasicInfo.attachSchema(new SimpleSchema({
     countryPetitioned: {
         label: "Have you ever been petitioned before? if yes which country?",
         type: String,
+        allowedValues: ['USA','Japan'],
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -690,8 +705,14 @@ BasicInfo.attachSchema(new SimpleSchema({
         type: String
     },
 
-    illness: {
+    bIllness: {
         label: "Any previous illness?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    illness: {
+        label: "please indicate",
         type: [String],
         allowedValues: ['Diabetes', 'Cancer', 'Back Pain', 'Stroke', 'Hypertension', 'Others']
     },
