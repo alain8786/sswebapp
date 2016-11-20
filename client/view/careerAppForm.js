@@ -15,7 +15,7 @@ Router.route('/c',{
     template: 'careerForm'
 });
 
-
+/**
 Template.basicInfo.onRendered(function() {
 
     $('.dateApplied').datetimepicker({
@@ -37,6 +37,7 @@ Template.basicInfo.helpers({
        return text;
    }
 });
+ **/
 
 Template.careerAppForm.events({
     'submit .form-horizontal'(event){
@@ -48,9 +49,9 @@ Template.careerAppForm.events({
 Template.careerForm.helpers({
     jobPositionOptions: function(){
         return [
-            {label: "Chef", value: "Chef"},
-            {label: "Waiter", value: "Waiter"},
-            {label: "Engineer", value: "Engineer"}
+            {label: "Sous Chef", value: "Sous Chef"},
+            {label: "Engine Repairman", value: "Engine Repairman"},
+            {label: "Laundryman", value: "Laundryman"}
         ];
     },
 
@@ -267,7 +268,7 @@ BasicInfo.attachSchema(new SimpleSchema({
     jobPositionApplied: {
         label: "Position Applied For",
         type: String,
-        allowedValues: ['Chef','Waiter','Engineer'],
+        allowedValues: ['Sous Chef','Engine Repairman','Laundryman'],
         autoform: {
             group: basicInfo,
             type: 'select'
