@@ -47,6 +47,15 @@ Template.careerAppForm.events({
 });
 
 Template.careerForm.helpers({
+    agControlNo: function () {
+        return "24654sdfs";
+
+    },
+
+    today: function(){
+        return moment().format("YYYY-MM-DD");
+    },
+
     jobPositionOptions: function(){
         return [
             {label: "Sous Chef", value: "Sous Chef"},
@@ -260,8 +269,7 @@ BasicInfo.attachSchema(new SimpleSchema({
         label: "Control No.",
         type: String,
         autoform: {
-            group: basicInfo,
-            type: 'text'
+            group: basicInfo
         }
     },
 
@@ -658,22 +666,22 @@ BasicInfo.attachSchema(new SimpleSchema({
         type: Number
     },
 
-    "contactPerson.name": {
+    "emergencyContactPerson.name": {
         label: "Name",
         type: String
     },
 
-    "contactPerson.relationship": {
+    "emergencyContactPerson.relationship": {
         label: "Relationship",
         type: String
     },
 
-    "contactPerson.address": {
+    "emergencyContactPerson.address": {
         label: "Address",
         type: String
     },
 
-    "contactPerson.contactNo": {
+    "emergencyContactPerson.contactNo": {
         label: "Contact No",
         type: Number
     },
@@ -718,15 +726,15 @@ BasicInfo.attachSchema(new SimpleSchema({
         allowedValues: ['Diabetes', 'Cancer', 'Back Pain', 'Stroke', 'Hypertension', 'Others']
     },
 
+    strIllness: {
+        label: "please specify",
+        type: String
+    },
+
     bDrugProblem: {
         label: "Any drug problem?",
         type: String,
         allowedValues: ["no","yes"]
-    },
-
-    drugProblem: {
-        label: "please describe",
-        type: String
     },
 
     bAlcoholProblem: {
@@ -734,7 +742,6 @@ BasicInfo.attachSchema(new SimpleSchema({
         type: String,
         allowedValues: ["no","yes"]
     },
-
 
     alcoholProblem: {
         label: "how often and how much?",
@@ -757,20 +764,11 @@ BasicInfo.attachSchema(new SimpleSchema({
         allowedValues: ["no","yes"]
     },
 
-    skinAllergies: {
-        label: "please describe",
-        type: String
-    },
 
     bSkinDisease: {
         label: "Have you ever been treated with skin disease?",
         type: String,
         allowedValues: ["no","yes"]
-    },
-
-    skinDisease: {
-        label: "please describe",
-        type: String
     },
 
     bTattoo: {
@@ -780,7 +778,7 @@ BasicInfo.attachSchema(new SimpleSchema({
     },
 
     tattoo: {
-        label: "please describe",
+        label: "where is it located",
         type: String
     },
 

@@ -20,9 +20,9 @@
         {{#autoForm id="careerForm" type="normal" collection="BasicInfo"}}
             <div class="panel panel-primary">
                 <div class="panel-body">
-                    {{> afQuickField name="controlNo"}}
+                    {{> afQuickField name="controlNo" disabled="true" value=agControlNo}}
                     {{> afQuickField name="jobPositionApplied" options=jobPositionOptions}}
-                    {{> afQuickField name="dateApplied"}}
+                    {{> afQuickField name="dateApplied" disabled="true" value=today}}
                     {{> afQuickField name="lastName"}}
                     {{> afQuickField name="firstName"}}
                     {{> afQuickField name="middleName"}}
@@ -38,7 +38,7 @@
                     {{> afQuickField name="civilStatus" options=civilStatusOptions}}
                     {{> afQuickField name="height"}}
                     {{> afQuickField name="weight"}}
-                    {{> afQuickField name="gender" options=genderOptions}}
+                    {{> afQuickField name="gender" options=genderOptions noselect=true type="select-radio-inline"}}
                     {{> afQuickField name="email"}}
                     {{> afQuickField name="cityAddress"}}
                     {{> afQuickField name="zipCode"}}
@@ -195,7 +195,7 @@
                         <tr>
                             <th>Course Attended</th>
                             <th>School/Institution</th>
-                            <th>MTC Certificate No.</th>
+                            <th>Certificate No.</th>
                             <th>Date Issued</th>
                             <th>Valid Until</th>
                         </tr>
@@ -221,7 +221,7 @@
                     {{> afQuickField name="father"}}
                     {{> afQuickField name="mother"}}
                     {{> afQuickField name="beneficiary"}}
-                    {{> afQuickField name="contactPerson"}}
+                    {{> afQuickField name="emergencyContactPerson"}}
 
                     <!--<button class="btn btn-primary">Add more visa</button>-->
                 </div>
@@ -238,15 +238,17 @@
                     {{#if afFieldValueIs name="bSurgery" value="yes"}}
                         {{> afQuickField name="surgery"}}
                     {{/if}}
+
                     {{> afQuickField name="bIllness" options="allowed" noselect=true type="select-radio-inline"}}
                     {{#if afFieldValueIs name="bIllness" value="yes"}}
                         {{> afQuickField name="illness" options="allowed" noselect=true type="select-checkbox-inline"}}
+                        {{#if afFieldValueContains name="illness" value="Others"}}
+                            {{> afQuickField name="strIllness"}}
+                        {{/if}}
                     {{/if}}
 
                     {{> afQuickField name="bDrugProblem" options="allowed" noselect=true type="select-radio-inline"}}
-                    {{#if afFieldValueIs name="bDrugProblem" value="yes"}}
-                        {{> afQuickField name="drugProblem"}}
-                    {{/if}}
+
                     {{> afQuickField name="bAlcoholProblem" options="allowed" noselect=true type="select-radio-inline"}}
                     {{#if afFieldValueIs name="bAlcoholProblem" value="yes"}}
                         {{> afQuickField name="alcoholProblem"}}
@@ -256,13 +258,9 @@
                         {{> afQuickField name="smoke"}}
                     {{/if}}
                     {{> afQuickField name="bSkinAllergies" options="allowed" noselect=true type="select-radio-inline"}}
-                    {{#if afFieldValueIs name="bSkinAllergies" value="yes"}}
-                        {{> afQuickField name="skinAllergies"}}
-                    {{/if}}
+
                     {{> afQuickField name="bSkinDisease" options="allowed" noselect=true type="select-radio-inline"}}
-                    {{#if afFieldValueIs name="bSkinDisease" value="yes"}}
-                        {{> afQuickField name="skinDisease"}}
-                    {{/if}}
+
                     {{> afQuickField name="bTattoo" options="allowed" noselect=true type="select-radio-inline"}}
                     {{#if afFieldValueIs name="bTattoo" value="yes"}}
                         {{> afQuickField name="tattoo"}}
