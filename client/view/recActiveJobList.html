@@ -1,0 +1,45 @@
+<template name="recActiveJobList">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title" style="text-align: center;">Active Job Posts</h1>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Date Needed</th>
+                    <th>Position</th>
+                    <th>New</th>
+                    <th>Qualified</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>2016-Nov-11</td>
+                    <td>Sous Chef</td>
+                    <td></td>
+                    <td></td>
+                    <td><a class="btn btn-primary btn-xs" href="{{pathFor route='recJD'}}" role="button">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>2016-Oct-24</td>
+                    <td>Engine Repairman</td>
+                    <td></td>
+                    <td></td>
+                    <td><a class="btn btn-primary btn-xs" href="{{pathFor route='recJD'}}" role="button">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>2016-Nov-02</td>
+                    <td>Laundryman</td>
+                    <td></td>
+                    <td></td>
+                    <td><a class="btn btn-primary btn-xs" href="{{pathFor route='recJD'}}" role="button">View Details</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a class="btn btn-primary" href="{{pathFor route='recPNJ'}}" role="button">New Job Post</a>
+        <a class="btn btn-primary" href="{{pathFor route='c'}}" role="button">View Archived Job Post</a>
+    </div>
+</template>
