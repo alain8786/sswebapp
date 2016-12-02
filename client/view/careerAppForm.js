@@ -2,6 +2,10 @@
  * Created by Alain on 01/11/2016.
  */
 
+Router.configure({
+    layoutTemplate: 'layout'
+});
+
 Router.route('/', {
     name: 'home',
     template: 'careerJobList'
