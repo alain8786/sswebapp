@@ -1,0 +1,174 @@
+/* CSS used here will be applied after bootstrap.css */
+@font-face {
+	font-family: FontAwesome;
+    src: url(http://fonts.googleapis.com/css?family=Istok+Web:500,700);
+	font-weight: normal;  
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: "Oswald", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	margin: 13.5px 0;
+	color: #bfcfff;
+}
+
+body{
+  /*padding-top: 70px;*/
+}
+
+.container-fluid{
+  padding:0px;
+}
+  
+
+.row-top{
+  	background-color: #5c809a;
+	margin-right: auto;
+    margin-left: auto;
+}
+  
+.navbar.navbar-default.navbar-fixed-top {
+    max-width: 1040px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 40px;
+    position:relative;
+  	background-color: #5c809a;
+    border:0px;
+}
+
+.header-sslogo {
+    height: 57px;
+    width: 270px;
+    display: inline-block;
+    margin-right: 0px;
+    float: left;
+}
+
+.header-sslogo-img {
+    background: url('http://139.59.193.217/wp-content/uploads/2016/06/logo-ss@2x.png') no-repeat center;
+    height: 47px;
+    margin-top: 16px;
+    width: 102px;
+    float: left;
+    background-size: cover;
+}
+
+.header-sslogo-name1 {
+    float: left;
+    display: initial;
+    margin-top: 16px;
+    font-family: "Oswald","Tahoma",sans-serif;
+    font-size: 32px;
+    line-height: 44px;
+    color: #fff;
+}
+
+.collapse.navbar-collapse{
+  float: right;
+  margin: 0;
+  padding: 20px 0 0;
+  color: #fff;
+}
+
+.collapse.navbar-collapse a {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+	font-family: "Oswald","Tahoma",sans-serif;
+}
+
+.navbar-nav a{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-default .navbar-nav>li>a{
+  color: #fff; 
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+  color: #cc8900; 
+}
+
+.navbar-nav > li > .dropdown-menu { 
+  font-size: 16px;
+  background-color: #454545; 
+}
+.navbar-nav > li > .dropdown-menu :hover{ 
+  font-size: 16px;
+  background-color: #a2c3f9; 
+}
+  
+.navbar-nav > li > .dropdown-menu a{ 
+  font-size: 16px;
+  color: #fff; 
+}
+
+/*footer*/
+.row-footer  {
+	padding-top: 60px;
+	margin-top: 0px;
+	
+	background-color: #193346;
+	color: #fff;
+}
+
+.container{
+   margin-right: inherit;
+}
+
+.col-md-4 h3 {
+	font-size: 20px;
+	padding: 0;
+	text-align: left;
+	color: #fff;
+}
+.col-md-4 .blue {
+	color: #bfdfff;
+	
+}
+.col-md-4 .row-left{
+  	width: 55%;
+	margin-right: 4%;
+	margin-left: 2%;
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 60px;
+	word-wrap: break-word;
+   	font-weight: bold;
+	font-size: 18px;
+}
+
+.col-md-4 .row-center {
+	width: 50%;
+	margin-left: 4%;
+	margin-right: 2%;
+}
+
+.col-md-4 .row-right {
+	width: 50%;
+	padding-bottom: 1px;
+}
+
+    
+.list-group-item{
+    position: relative;
+    display: block;
+    padding: 10px 0px;
+    margin-bottom: -1px;
+  	background-color: transparent; 
+    border: 0px;
+    border-bottom: 1px dotted #ddd;
+}
+  
+.site-footer {
+	background-color: #243847;
+}
+
+.copyright{
+	padding: 10px 5px;
+  	margin-left: 16%;
+}
