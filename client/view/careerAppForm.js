@@ -147,20 +147,31 @@ Template.careerForm.helpers({
 
 });
 
-Template.careerForm.events({
-
-});
+// Template.careerForm.events({
+//     'click #btnSubmit': function (e){
+//         e.preventDefault();
+//         console.log("submit button pressed");
+//         Router.go('home');
+//     }
+//
+// });
 
 AutoForm.hooks({
-    careerForm:{
-        onSubmit: function (insertDoc, updateDoc, currentDoc) {
-            this.done();
-            Router.go('books');
+   careerForm: {
+       onSubmit: function(){
+           this.event.preventDefault();
+           console.log('onSubmit called');
+           return false;
+       }
+   },
+
+    testForm: {
+        onSubmit: function(){
+            this.event.preventDefault();
+            console.log('onSubmit called');
+            return false;
         }
-
     }
-    
-
 });
 
 Books = new Mongo.Collection("books");
@@ -396,7 +407,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     gender: {
         label: "Gender",
-        type: [String],
+        type: String,
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -822,3 +833,18 @@ BasicInfo.attachSchema(new SimpleSchema({
 
 
 }));
+
+
+// AutoForm.addHooks('testForm', {
+//
+// });
+
+Template.tester.helpers({
+    schema: function(){
+        return new SimpleSchema({
+            test: {
+                type: String
+            }
+        });
+    }
+});

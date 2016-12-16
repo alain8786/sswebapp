@@ -17,12 +17,12 @@
 </template>
 
 <template name="careerForm">
-        {{#autoForm id="careerForm" type="normal" collection="BasicInfo"}}
+        {{#autoForm id="careerForm" collection="BasicInfo"}}
             <div class="panel panel-primary">
                 <div class="panel-body">
-                    {{> afQuickField name="controlNo" disabled="true" value=agControlNo}}
+                    {{> afQuickField name="controlNo" disabled="false" value=agControlNo}}
                     {{> afQuickField name="jobPositionApplied" options=jobPositionOptions}}
-                    {{> afQuickField name="dateApplied" disabled="true" value=today}}
+                    {{> afQuickField name="dateApplied" disabled="false" value=today}}
                     {{> afQuickField name="lastName"}}
                     {{> afQuickField name="firstName"}}
                     {{> afQuickField name="middleName"}}
@@ -274,9 +274,20 @@
                 {{> afQuickField name="characterRef"}}
 
                 <div style="text-align: center;">
-                    <a class="btn btn-primary" href="{{pathFor route='home'}}" role="button">Submit</a>
+                    <a class="btn btn-primary" href="{{pathFor route='home'}}" role="button" >Submit</a>
+                    <button class="btn btn-primary" type="submit" id="btnSubmit">Button</button>
                 </div>
             </div>
+
         {{/autoForm}}
 
+</template>
+
+<template name="tester">
+    {{#autoForm schema=schema id='testForm'}}
+        {{#each afFieldNames}}
+            {{> afQuickField name=name options=afOptionsFromSchema}}
+        {{/each}}
+        <button class="btn btn-primary" type="submit">Submit</button>
+    {{/autoForm}}
 </template>
