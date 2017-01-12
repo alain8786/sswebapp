@@ -1,282 +1,156 @@
-/**
- * Created by Alain on 01/11/2016.
- */
-
-Router.configure({
-    layoutTemplate: 'layout'
-});
-
-Router.route('/', {
-    name: 'home',
-    template: 'careerJobList'
-});
-
-Router.route('/books', {
-    template: 'insertBookForm'
-});
-
-Router.route('/c',{
-    template: 'careerForm'
-});
-
-
-/**
-Template.basicInfo.onRendered(function() {
-
-    $('.dateApplied').datetimepicker({
-        format: "MMM DD, YYYY",
-        defaultDate: moment().format()
-    });
-});
-
-Template.basicInfo.events({
-   'click .selItem'(event){
-       var posApplied = event.target.text;
-       console.log(event.target.text);
-    }
-
-});
-
-Template.basicInfo.helpers({
-   posApplied(text){
-       return text;
-   }
-});
- **/
-
-Template.careerAppForm.events({
-    'submit .form-horizontal'(event){
-        event.preventDefault();
-        Router.go('books');
-    }
-});
-
-Template.careerForm.helpers({
-    agControlNo: function () {
-        return "24654sdfs";
-
-    },
-
-    today: function(){
-        return moment().format("YYYY-MM-DD");
-    },
-
-    jobPositionOptions: function(){
-        return [
-            {label: "Sous Chef", value: "Sous Chef"},
-            {label: "Engine Repairman", value: "Engine Repairman"},
-            {label: "Laundryman", value: "Laundryman"}
-        ];
-    },
-
-    referralOptions: function () {
-        return [
-            {label: "Facebook", value: "Facebook"},
-            {label: "Word of Mouth", value: "Word of Mouth"}
-        ];
-    },
-
-    ageOptions: function () {
-        return {
-            18: "18",
-            19: "19",
-            20: "20",
-            21: "21",
-            22: "22",
-            23: "23",
-            24: "24",
-            25: "25",
-            26: "26",
-            27: "27",
-            28: "28",
-            29: "29",
-            30: "30",
-            31: "31",
-            32: "32",
-            34: "34",
-            35: "35",
-            36: "36",
-            37: "37",
-            38: "38",
-            39: "39",
-            40: "40",
-            41: "41",
-            42: "42",
-            43: "43",
-            44: "44",
-            45: "45",
-            46: "46",
-            47: "47",
-            48: "48",
-            49: "49",
-            50: "50",
-            51: "51",
-            52: "52",
-            53: "53",
-            54: "54",
-            55: "55",
-            56: "56",
-            57: "57",
-            58: "58",
-            59: "59",
-            60: "60",
-            61: "61",
-            62: "62",
-            63: "63",
-            64: "64",
-            65: "65"
-        }
-    },
-
-    civilStatusOptions: function () {
-        return [
-            {label: "Single", value: "Single"},
-            {label: "Married", value: "Married"},
-            {label: "Widowed", value: "Widowed"},
-            {label: "Separated", value: "Separated"},
-            {label: "Divorced", value: "Divorced"}
-        ];
-    },
-
-    genderOptions: function () {
-        return [
-            {label: "Male", value: "Male"},
-            {label: "Female", value: "Female"}
-        ];
-    }
-
-});
-
-// Template.careerForm.events({
-//     'click #btnSubmit': function (e){
-//         e.preventDefault();
-//         console.log("submit button pressed");
-//         Router.go('home');
-//     }
-//
-// });
-
 AutoForm.hooks({
-   careerForm: {
-       onSubmit: function(){
-           this.event.preventDefault();
-           console.log('onSubmit called');
-           return false;
-       }
-   },
-
-    testForm: {
-        onSubmit: function(){
+    testInsertForm: {
+        onSubmit: function(doc){
             this.event.preventDefault();
-            console.log('onSubmit testForm called');
+            Person.insert(doc);
+            console.log('onSubmit testInsertForm called');
+            //this.done();
             return false;
         }
     }
 });
 
-Books = new Mongo.Collection("books");
-Books.attachSchema(new SimpleSchema({
-    title: {
+// Template.testInsertForm.events({
+//     'click #btnSubmit': function (e){
+//         e.preventDefault();
+//         console.log("submit TIF button pressed");
+//         console.log("lastName " + AutoForm.getFieldValue('lastName') );
+//     }
+//
+// });
+
+
+Person.attachSchema(new SimpleSchema({
+    lastName: {
+        label: "Last Name",
         type: String,
-        label: "Title",
-        max: 200
+        autoform: {
+            group: person,
+            type: 'text'
+        }
     },
-    author: {
+
+    firstName: {
+        label: "First Name",
         type: String,
-        label: "Author"
+        autoform: {
+            group: person,
+            type: 'text'
+        }
     },
-    copies: {
+
+    middleName: {
+        label: "Middle Name",
+        type: String,
+        autoform: {
+            group: person,
+            type: 'text'
+        }
+    },
+
+    referral: {
+        label: "How did you know about us?",
+        type: String,
+        allowedValues: ['Facebook', 'Word of Mouth', 'Referred by a friend'],
+        optional: true,
+        autoform: {
+            group: person,
+            type: 'select'
+        }
+    },
+
+    age: {
+        label: "Age",
         type: Number,
-        label: "Number of copies",
-        min: 0
+        allowedValues: [18,19,20],
+        autoform: {
+            group: person,
+            type: 'select'
+        }
     },
-    lastCheckedOut: {
+
+    dateOfBirth: {
+        label: "Date of Birth",
         type: Date,
-        label: "Last date this book was checked out",
-        optional: true
-    },
-    summary: {
-        type: String,
-        label: "Brief summary",
-        optional: true,
-        max: 1000
-    }
-}));
-
-studentData = "StudentData";  // avoid typos, this string occurs many times.
-
-StudentData = new Mongo.Collection(studentData);
-
-StudentData.attachSchema(new SimpleSchema({
-    name: {
-        label: "Name",
-        type: String,
-        optional: false,
-        max: 20,
         autoform: {
-            group: studentData,
-            placeholder: "John Doe"
+            group: person,
+            type: 'date'
         }
     },
-    bio: {
-        label: "Bio",
+
+    gender: {
+        label: "Gender",
         type: String,
-        optional: true,
-        max: 1000,
+        allowedValues: ['Male', 'Female'],
         autoform: {
-            group: studentData,
-            placeholder: 'Short (less than 1000 characters) biographical statement.',
-            rows: 5
+            group: person,
+            type: 'select'
         }
     },
-    hobbies: {
-        label: "Hobbies",
+
+    bIllness: {
+        label: "Any previous illness?",
+        type: String,
+        allowedValues: ["no","yes"]
+    },
+
+    illness: {
+        label: "please indicate",
         type: [String],
         optional: true,
-        allowedValues: ['Surfing', 'Running', 'Biking', 'Paddling'],
-        autoform: {
-            group: studentData,
-            type: "select-checkbox-inline"
-        }
+        allowedValues: ['Diabetes', 'Cancer', 'Back Pain', 'Stroke', 'Hypertension', 'Others']
     },
-    level: {
-        label: "Level",
+
+    strIllness: {
+        label: "please specify",
         type: String,
-        optional: false,
-        allowedValues: ['Freshman', 'Sophomore', 'Junior', 'Senior'],
+        optional: true,
+    },
+
+    spouse: {
+      type: Object
+    },
+
+    "spouse.name": {
+        label: "Name of spouse",
+        type: String,
         autoform: {
-            group: studentData,
-            type: 'select-radio-inline'
+            group: person,
+            type: 'text'
         }
     },
-    gpa: {
-        label: "GPA",
+
+    "spouse.DOB": {
+        label: "Birthdate",
+        type: Date,
+        autoform: {
+            group: person,
+            type: 'date'
+        }
+
+    },
+
+    "spouse.address": {
+        label: "Address",
+        type: String,
+        autoform: {
+            group: person,
+            type: 'text'
+        }
+    },
+
+    "spouse.contactNo": {
+        label: "Contact No",
         type: Number,
-        optional: false,
-        allowedValues: [0, 1, 2, 3, 4],
         autoform: {
-            group: studentData,
-            options: [
-                {label: "0.0 - 0.99 GPA", value: 0},
-                {label: "1.0 - 1.99 GPA", value: 1},
-                {label: "2.0 - 2.99 GPA", value: 2},
-                {label: "3.0 - 3.99 GPA", value: 3},
-                {label: "4.0 (or greater) GPA", value: 4}
-            ]
-        }
-    },
-    majors: {
-        label: "Majors",
-        type: [String],
-        optional: true,
-        allowedValues: ['Physics', 'Math', 'Biology', 'Chemistry'],
-        autoform: {
-            group: studentData,
-            type: 'select-multiple'
-
+            group: person,
+            type: 'text'
         }
     }
+
 }));
+
+/*
 
 basicInfo ="BasicInfo";
 BasicInfo = new Mongo.Collection(basicInfo);
@@ -345,11 +219,11 @@ BasicInfo.attachSchema(new SimpleSchema({
         }
     },
 
-    /***
+    /!***
      *
      * Personal Background
      *
-     */
+     *!/
 
     age: {
         label: "Age",
@@ -496,31 +370,31 @@ BasicInfo.attachSchema(new SimpleSchema({
     },
 
 
-    /***
+    /!***
      *
      * Educational Background
      *
-     */
+     *!/
 
 
 
-    /***
+    /!***
      *
      * Past Employment
      *
-     */
+     *!/
 
-    /***
+    /!***
      *
      * Licenses
      *
-     */
+     *!/
 
-    /***
+    /!***
      *
      * Visa Information
      *
-     */
+     *!/
 
     embassy: {
         label: "Have you ever been denied any VISA Applications? If yes, please indicate which Embassy and date of application",
@@ -552,17 +426,17 @@ BasicInfo.attachSchema(new SimpleSchema({
     },
 
 
-    /***
+    /!***
      *
      * Training Certificate
      *
-     */
+     *!/
 
-    /***
+    /!***
      *
      * Family Information
      *
-     */
+     *!/
 
     "spouse.name": {
         label: "Name of spouse",
@@ -614,7 +488,8 @@ BasicInfo.attachSchema(new SimpleSchema({
         label: "Children",
         type: Array,
         optional: true,
-        minCount: 0
+        minCount: 0,
+        maxCount: 20
     },
 
     "child.$": {
@@ -701,11 +576,11 @@ BasicInfo.attachSchema(new SimpleSchema({
         type: Number
     },
 
-    /***
+    /!***
      *
      * Medical History
      *
-     */
+     *!/
 
     bRepatriated: {
         label: "Have you ever been repatriated before?",
@@ -797,21 +672,22 @@ BasicInfo.attachSchema(new SimpleSchema({
         type: String
     },
 
-    /***
+    /!***
      *
      * Character References
      *
-     */
+     *!/
 
     characterRef: {
         label: " ",
         type: Array,
         optional: false,
-        minCount: 3,
+        minCount: 0,
+        maxCount: 5
     },
 
     "characterRef.$": {
-      type: Object
+        type: Object
     },
 
     "characterRef.$.name": {
@@ -832,20 +708,4 @@ BasicInfo.attachSchema(new SimpleSchema({
 
 }));
 
-
-// AutoForm.addHooks('testForm', {
-//
-// });
-
-Template.tester.helpers({
-    schema: function(){
-        return new SimpleSchema({
-            test: {
-                type: String
-            },
-            name: {
-                type: String
-            }
-        });
-    }
-});
+*/

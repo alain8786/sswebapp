@@ -1,0 +1,31 @@
+<template name="testInsertForm">
+    {{#autoForm id="testInsertForm" collection="Person"}}
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                {{> afQuickField name="lastName"}}
+                {{> afQuickField name="firstName"}}
+                {{> afQuickField name="middleName"}}
+                {{> afQuickField name="referral" options="allowed"}}
+                {{> afQuickField name="age" options="allowed"}}
+                {{> afQuickField name="dateOfBirth"}}
+                {{> afQuickField name="gender" options="allowed" noselect=true type="select-radio-inline"}}
+
+                {{> afQuickField name="bIllness" options="allowed" noselect=true type="select-radio-inline"}}
+                {{#if afFieldValueIs name="bIllness" value="yes"}}
+                    {{> afQuickField name="illness" options="allowed" noselect=true type="select-checkbox-inline"}}
+                    {{#if afFieldValueContains name="illness" value="Others"}}
+                        {{> afQuickField name="strIllness"}}
+                    {{/if}}
+                {{/if}}
+
+                {{> afQuickField name="spouse"}}
+                <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+            </div>
+
+            <div style="text-align: center;">
+                <button class="btn btn-primary" type="submit" id="btnSubmit">Button</button>
+            </div>
+        </div>
+
+    {{/autoForm}}
+</template>
