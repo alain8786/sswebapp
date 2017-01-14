@@ -29,3 +29,66 @@
 
     {{/autoForm}}
 </template>
+
+<template name="displayTable">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title" style="text-align: center;">Vacancies</h1>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Position</th>
+                    <th>Department</th>
+                    <th>Vessel</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {{#each people}}
+                    <tr>
+                        <td>{{lastName}}</td>
+                        <td>{{firstName}}</td>
+                        <td>{{middleName}}</td>
+                        <td></td>
+                        <td></td>
+                        <td><a class="btn btn-primary btn-xs" href="{{pathFor route='cjd'}}" role="button">View Details</a></td>
+                    </tr>
+                {{/each}}
+                </tbody>
+
+                <tbody>
+                <tr>
+                    <td>2016-Nov-11</td>
+                    <td>2016-Dec-11</td>
+                    <td>Sous Chef</td>
+                    <td>Galley</td>
+                    <td>First Elizabeth</td>
+                    <td><a class="btn btn-primary btn-xs" href="{{pathFor route='cjd'}}" role="button">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>2016-Oct-24</td>
+                    <td>2016-Nov-24</td>
+                    <td>Engine Repairman</td>
+                    <td>Deck and Engine</td>
+                    <td>Excellence Rhone</td>
+                    <td><a class="btn btn-primary btn-xs" href="{{pathFor route='cjd'}}" role="button">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>2016-Nov-02</td>
+                    <td>2016-Dec-02</td>
+                    <td>Laundryman</td>
+                    <td>Hotel</td>
+                    <td>Delta Queen</td>
+                    <td><a class="btn btn-primary btn-xs" href="{{pathFor route='cjd'}}" role="button">View Details</a></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</template>

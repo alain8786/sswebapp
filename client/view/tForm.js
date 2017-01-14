@@ -19,6 +19,12 @@ AutoForm.hooks({
 //
 // });
 
+Template.displayTable.helpers({
+    people: function(){
+        return Person.find();
+    }
+})
+
 
 Person.attachSchema(new SimpleSchema({
     lastName: {
