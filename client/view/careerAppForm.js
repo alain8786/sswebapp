@@ -158,9 +158,10 @@ Template.careerForm.helpers({
 
 AutoForm.hooks({
    careerForm: {
-       onSubmit: function(){
+       onSubmit: function(doc){
            this.event.preventDefault();
-           console.log('onSubmit called');
+           BasicInfo.insert(doc);
+           console.log('onSubmit careerForm called');
            return false;
        }
    },
@@ -278,21 +279,20 @@ StudentData.attachSchema(new SimpleSchema({
     }
 }));
 
-basicInfo ="BasicInfo";
-BasicInfo = new Mongo.Collection(basicInfo);
+
 BasicInfo.attachSchema(new SimpleSchema({
     controlNo: {
         label: "Control No.",
         type: String,
         autoform: {
-            group: basicInfo
+            group: basicInfo,
+            type: 'text'
         }
     },
 
     jobPositionApplied: {
         label: "Position Applied For",
         type: String,
-        allowedValues: ['Sous Chef','Engine Repairman','Laundryman'],
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -345,6 +345,7 @@ BasicInfo.attachSchema(new SimpleSchema({
         }
     },
 
+
     /***
      *
      * Personal Background
@@ -354,6 +355,7 @@ BasicInfo.attachSchema(new SimpleSchema({
     age: {
         label: "Age",
         type: Number,
+        allowedValues: [18,19,20],
         autoform: {
             group: basicInfo,
             type: 'select'
@@ -495,68 +497,77 @@ BasicInfo.attachSchema(new SimpleSchema({
         }
     },
 
+    //
+    // /***
+    //  *
+    //  * Educational Background
+    //  *
+    //  */
+    //
+    //
+    //
+    // /***
+    //  *
+    //  * Past Employment
+    //  *
+    //  */
+    //
+    // /***
+    //  *
+    //  * Licenses
+    //  *
+    //  */
+    //
+    // /***
+    //  *
+    //  * Visa Information
+    //  *
+    //  */
+    //
+    // embassy: {
+    //     label: "Have you ever been denied any VISA Applications? If yes, please indicate which Embassy and date of application",
+    //     type: String,
+    //     allowedValues: ['USA','Korea','Japan'],
+    //     autoform: {
+    //         group: basicInfo,
+    //         type: 'select'
+    //     }
+    // },
+    //
+    // dateOfVisaApplication: {
+    //     label: "Date of Application",
+    //     type: Date,
+    //     autoform: {
+    //         group: basicInfo,
+    //         type: 'date'
+    //     }
+    // },
+    //
+    // countryPetitioned: {
+    //     label: "Have you ever been petitioned before? if yes which country?",
+    //     type: String,
+    //     allowedValues: ['USA','Japan'],
+    //     autoform: {
+    //         group: basicInfo,
+    //         type: 'select'
+    //     }
+    // },
+    //
+    //
+    // /***
+    //  *
+    //  * Training Certificate
+    //  *
+    //  */
+    //
 
-    /***
-     *
-     * Educational Background
-     *
-     */
-
-
-
-    /***
-     *
-     * Past Employment
-     *
-     */
-
-    /***
-     *
-     * Licenses
-     *
-     */
-
-    /***
-     *
-     * Visa Information
-     *
-     */
-
-    embassy: {
-        label: "Have you ever been denied any VISA Applications? If yes, please indicate which Embassy and date of application",
-        type: String,
-        allowedValues: ['USA','Korea','Japan'],
-        autoform: {
-            group: basicInfo,
-            type: 'select'
-        }
-    },
-
-    dateOfVisaApplication: {
-        label: "Date of Application",
-        type: Date,
-        autoform: {
-            group: basicInfo,
-            type: 'date'
-        }
-    },
-
-    countryPetitioned: {
-        label: "Have you ever been petitioned before? if yes which country?",
-        type: String,
-        allowedValues: ['USA','Japan'],
-        autoform: {
-            group: basicInfo,
-            type: 'select'
-        }
-    },
-
-
-    /***
-     *
-     * Training Certificate
-     *
-     */
+    // placeholder: {
+    //     type: String,
+    //     autoform: {
+    //         group: basicInfo,
+    //         type: 'text'
+    //     }
+    // },
 
     /***
      *
@@ -601,24 +612,12 @@ BasicInfo.attachSchema(new SimpleSchema({
         }
     },
 
-    placeholder: {
-        type: String,
-        autoform: {
-            group: basicInfo,
-            type: 'text'
-        }
-    },
-
 
     child: {
         label: "Children",
-        type: Array,
+        type: [Object],
         optional: true,
         minCount: 0
-    },
-
-    "child.$": {
-        type: Object
     },
 
     "child.$.name": {
@@ -715,6 +714,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     repatriated: {
         label: "state reason",
+        optional: true,
         type: String
     },
 
@@ -726,6 +726,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     surgery: {
         label: "please describe",
+        optional: true,
         type: String
     },
 
@@ -737,12 +738,14 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     illness: {
         label: "please indicate",
+        optional: true,
         type: [String],
         allowedValues: ['Diabetes', 'Cancer', 'Back Pain', 'Stroke', 'Hypertension', 'Others']
     },
 
     strIllness: {
         label: "please specify",
+        optional: true,
         type: String
     },
 
@@ -760,6 +763,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     alcoholProblem: {
         label: "how often and how much?",
+        optional: true,
         type: String
     },
 
@@ -770,6 +774,7 @@ BasicInfo.attachSchema(new SimpleSchema({
     },
     smoke: {
         label: "how many sticks a day?",
+        optional: true,
         type: String
     },
 
@@ -794,6 +799,7 @@ BasicInfo.attachSchema(new SimpleSchema({
 
     tattoo: {
         label: "where is it located",
+        optional: true,
         type: String
     },
 
@@ -804,14 +810,9 @@ BasicInfo.attachSchema(new SimpleSchema({
      */
 
     characterRef: {
-        label: " ",
-        type: Array,
-        optional: false,
-        minCount: 3,
-    },
-
-    "characterRef.$": {
-      type: Object
+        label: "Character Reference",
+        type: [Object],
+        minCount: 3
     },
 
     "characterRef.$.name": {

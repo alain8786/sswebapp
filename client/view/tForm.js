@@ -16,8 +16,13 @@ AutoForm.hooks({
 //         console.log("submit TIF button pressed");
 //         console.log("lastName " + AutoForm.getFieldValue('lastName') );
 //     }
-//
 // });
+
+Template.displayTable.events({
+    'click #btnAddRow': function (e) {
+        console.log("pressed button Add Row");
+    }
+});
 
 Template.displayTable.helpers({
     people: function(){

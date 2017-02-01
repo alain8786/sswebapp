@@ -29,12 +29,14 @@
                     {{> afQuickField name="referral" options=referralOptions}}
                     <!--<button type="submit" class="btn btn-primary">Submit</button>-->
                 </div>
+
                 <div class="panel-heading">
                     <h1 class="panel-title"><strong>Personal Background</strong></h1>
                 </div>
                 <div class="panel-body">
-                    {{> afQuickField name="age" options=ageOptions}}
+                    {{> afQuickField name="age" options="allowed"}}
                     {{> afQuickField name="dateOfBirth"}}
+                    {{> afQuickField name="placeOfBirth"}}
                     {{> afQuickField name="civilStatus" options=civilStatusOptions}}
                     {{> afQuickField name="height"}}
                     {{> afQuickField name="weight"}}
@@ -50,167 +52,10 @@
                     {{> afQuickField name="dateIssued"}}
                 </div>
 
-                <div class="panel-heading">
-                    <h1 class="panel-title">Educational Background (Optional)</h1>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name of School/Institution</th>
-                                <th>Course Taken</th>
-                                <th>Period</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="panel-heading">
-                    <h1 class="panel-title">Past Employment</h1>
-                    <small>Shipboard Experience (please start with most recent employment) Maximum of 10</small>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Vessel</th>
-                            <th>Type</th>
-                            <th>Position</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Total Months</th>
-                            <th>Agency</th>
-                            <th>GRT/HP</th>
-                            <th>Last Wages</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="panel-heading">
-                    <small>Hotel/Land Based Experience (please start with most recent employment) Maximum of 10</small>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Hotel/Employer</th>
-                            <th>Nature of Business</th>
-                            <th>Position</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Total Months</th>
-                            <th>Reason for leaving</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="panel-heading">
-                    <h1 class="panel-title">Licenses</h1>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Number</th>
-                            <th>Rank</th>
-                            <th>Date Issued</th>
-                            <th>Valid Until</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="panel-heading">
-                    <h1 class="panel-title">Visa Information</h1>
-                </div>
-                <div class="panel-body">
-                    {{> afQuickField name="embassy" options="allowed"}}
-                    {{> afQuickField name="dateOfVisaApplication"}}
-                    {{> afQuickField name="countryPetitioned" options="allowed"}}
-                </div>
-
-                <div class="panel-heading">
-                    <h1 class="panel-title">Training Certificates</h1>
-                </div>
-                <div class="panel-body">
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Course Attended</th>
-                            <th>School/Institution</th>
-                            <th>Certificate No.</th>
-                            <th>Date Issued</th>
-                            <th>Valid Until</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                            <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!-- Insert Placeholders here-->
+                <!---->
+                <!---->
+                <!---->
 
                 <div class="panel-heading">
                     <h1 class="panel-title">Family Information</h1>
@@ -222,8 +67,6 @@
                     {{> afQuickField name="mother"}}
                     {{> afQuickField name="beneficiary"}}
                     {{> afQuickField name="emergencyContactPerson"}}
-
-                    <!--<button class="btn btn-primary">Add more visa</button>-->
                 </div>
 
                 <div class="panel-heading">
@@ -273,9 +116,11 @@
                 </div>
                 {{> afQuickField name="characterRef"}}
 
+
+
                 <div style="text-align: center;">
-                    <a class="btn btn-primary" href="{{pathFor route='home'}}" role="button" >Submit</a>
-                    <button class="btn btn-primary" type="submit" id="btnSubmit">Button</button>
+                    <a class="btn btn-primary" href="{{pathFor route='home'}}" role="button" >Bypass the page</a>
+                    <button class="btn btn-primary" type="submit" id="btnSubmit">Insert to DB</button>
                 </div>
             </div>
 
@@ -290,4 +135,172 @@
         {{/each}}
         <button class="btn btn-primary" type="submit">Submit</button>
     {{/autoForm}}
+</template>
+
+<template name="diff">
+
+
+
+    <div class="panel-heading">
+        <h1 class="panel-title">Educational Background (Optional)</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name of School/Institution</th>
+                <th>Course Taken</th>
+                <th>Period</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-heading">
+        <h1 class="panel-title">Past Employment</h1>
+        <small>Shipboard Experience (please start with most recent employment) Maximum of 10</small>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Vessel</th>
+                <th>Type</th>
+                <th>Position</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Total Months</th>
+                <th>Agency</th>
+                <th>GRT/HP</th>
+                <th>Last Wages</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-heading">
+        <small>Hotel/Land Based Experience (please start with most recent employment) Maximum of 10</small>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Hotel/Employer</th>
+                <th>Nature of Business</th>
+                <th>Position</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Total Months</th>
+                <th>Reason for leaving</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-heading">
+        <h1 class="panel-title">Licenses</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Number</th>
+                <th>Rank</th>
+                <th>Date Issued</th>
+                <th>Valid Until</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-heading">
+        <h1 class="panel-title">Visa Information</h1>
+    </div>
+    <div class="panel-body">
+        {{> afQuickField name="embassy" options="allowed"}}
+        {{> afQuickField name="dateOfVisaApplication"}}
+        {{> afQuickField name="countryPetitioned" options="allowed"}}
+    </div>
+
+    <div class="panel-heading">
+        <h1 class="panel-title">Training Certificates</h1>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>Course Attended</th>
+                <th>School/Institution</th>
+                <th>Certificate No.</th>
+                <th>Date Issued</th>
+                <th>Valid Until</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+                <td><div style="height: 34px;">{{> afQuickField name="placeholder" label=false}}</div></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 </template>
