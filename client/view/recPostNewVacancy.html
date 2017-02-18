@@ -1,5 +1,5 @@
-<template name="recPostNewJob">
-    {{#autoForm id="recPostNewJobForm" type="normal" collection="JobPosition"}}
+<template name="recPostNewVacancy">
+    {{#autoForm id="recPostNewVacancyForm" collection="vacancyPost"}}
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h1 class="panel-title"><strong>New Job Position</strong></h1>
@@ -8,14 +8,12 @@
                 {{> afQuickField name="vesselType"}}
                 {{> afQuickField name="department"}}
                 {{> afQuickField name="jobTitle"}}
-                {{> afQuickField name="nCrewNeeded"}}
                 {{> afQuickField name="openDate"}}
                 {{> afQuickField name="closeDate"}}
-                {{> afQuickField name="qualifications"}}
             </div>
 
             <div style="text-align: center;">
-                <a class="btn btn-primary" href="{{pathFor route='recPNJ'}}" role="button">Post</a>
+                <a class="btn btn-primary" href="{{pathFor route='recPNV'}}" role="button">Post</a>
             </div>
         </div>
     {{/autoForm}}
