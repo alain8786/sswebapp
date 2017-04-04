@@ -1,19 +1,43 @@
 <template name="recPostNewVacancy">
-    {{#autoForm id="recPostNewVacancyForm" collection="vacancyPost"}}
+    {{#autoForm id="recPostNewVacancyForm" collection="VacancyPost"}}
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h1 class="panel-title"><strong>New Job Position</strong></h1>
+                <h1 class="panel-title"><strong>Add New Vacancy</strong></h1>
             </div>
             <div class="panel-body">
+                {{> afQuickField name="dateStart"}}
+                {{> afQuickField name="dateEnd"}}
+                {{> afQuickField name="jobPosition" options=jobPositionSelectList}}
+                <a class="btn btn-primary" href="{{pathFor route='recAJP'}}" role="button">Add Job Position</a>
                 {{> afQuickField name="vesselType"}}
-                {{> afQuickField name="department"}}
-                {{> afQuickField name="jobTitle"}}
-                {{> afQuickField name="openDate"}}
-                {{> afQuickField name="closeDate"}}
             </div>
 
             <div style="text-align: center;">
                 <a class="btn btn-primary" href="{{pathFor route='recPNV'}}" role="button">Post</a>
+                <button class="btn btn-primary" type="submit" id="btnSubmit">Insert to DB</button>
+            </div>
+        </div>
+    {{/autoForm}}
+
+</template>
+
+<template name="recAddJobPosition">
+    {{#autoForm id="recAddJobPositionForm" collection="JobPosition"}}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title"><strong>Add New Job Position</strong></h1>
+            </div>
+            <div class="panel-body">
+                {{> afQuickField name="name"}}
+                {{> afQuickField name="jobCommitment"}}
+                {{> afQuickField name="qualifications"}}
+                {{> afQuickField name="keyResponsibilities"}}
+                {{> afQuickField name="visaRequirements"}}
+            </div>
+
+            <div style="text-align: center;">
+                <a class="btn btn-primary" role="button">Post</a>
+                <button class="btn btn-primary" type="submit" id="btnSubmit">Insert to DB</button>
             </div>
         </div>
     {{/autoForm}}

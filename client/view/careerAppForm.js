@@ -2,13 +2,15 @@
  * Created by Alain on 01/11/2016.
  */
 
+/*
 Router.configure({
     layoutTemplate: 'layout'
 });
+*/
 
 Router.route('/', {
     name: 'home',
-    template: 'careerJobList'
+    template: 'recPostNewVacancy'
 });
 
 Router.route('/books', {
@@ -44,14 +46,14 @@ Template.basicInfo.helpers({
 });
  **/
 
-Template.careerAppForm.events({
+Template.careerForm.events({
     'submit .form-horizontal'(event){
         event.preventDefault();
         Router.go('books');
     }
 });
 
-Template.careerForm.helpers({
+Template.careerAppForm.helpers({
     agControlNo: function () {
         return "24654sdfs";
 
@@ -112,10 +114,10 @@ Template.careerForm.helpers({
 // });
 
 AutoForm.hooks({
-   careerForm: {
+   careerAppForm: {
        onSubmit: function(doc){
            this.event.preventDefault();
-           BasicInfo.insert(doc);
+           Applicant.insert(doc);
            console.log('onSubmit careerForm called');
            return false;
        }
