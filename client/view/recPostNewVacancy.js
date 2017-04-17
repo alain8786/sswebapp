@@ -6,6 +6,7 @@ Router.route('/recAJP',{
    template: 'recAddJobPosition'
 });
 
+Session.set('sJPID','');
 
 AutoForm.hooks({
     recPostNewVacancyForm: {
@@ -32,7 +33,26 @@ AutoForm.hooks({
 Template.recPostNewVacancy.helpers({
     jobPositionSelectList: function(){
         return JobPosition.find().map(function (jp) {
-            return {label: jp.name, value: jp._id};
+            return {
+                label: jp.name,
+                value: jp._id
+            };
         });
+    },
+
+    jpid: function(){
+        return Session.get('sJPID');
+
     }
+});
+
+Template.recPostNewVacancy.events({
+    'change .form-control': function (e) {
+        e.preventDefault();
+        if (e.target.getAttribute('name') === 'jobPosition')
+            Session.set('sJPID',e.target.value);
+        console.log("pressed select " + e.target.value);
+    }
+
+
 });

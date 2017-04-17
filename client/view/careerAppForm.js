@@ -18,8 +18,9 @@ Router.route('/books', {
 });
 
 Router.route('/c',{
-    template: 'careerForm'
+    template: 'careerAppForm'
 });
+
 
 
 /**

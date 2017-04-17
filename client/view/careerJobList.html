@@ -16,14 +16,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>2016-Nov-11</td>
-                    <td>2016-Dec-11</td>
-                    <td>Sous Chef</td>
-                    <td>Galley</td>
-                    <td>First Elizabeth</td>
-                    <td><a class="btn btn-primary btn-xs" href="{{pathFor route='cjd'}}" role="button">View Details</a></td>
-                </tr>
+                {{#each vacancyPostList}}
+                    <tr>
+                        <td>{{dateStart}}</td>
+                        <td>{{dateStart}}</td>
+                        <td>{{jobPosition}}</td>
+                        <td>{{vesselType}}</td>
+                        <td><a class="btn btn-primary btn-xs" href="cjd/{{jobPosition}}" role="button">View Details</a></td>
+                    </tr>
+                {{/each}}
                 <tr>
                     <td>2016-Oct-24</td>
                     <td>2016-Nov-24</td>
@@ -47,7 +48,7 @@
 </template>
 
 <template name="careerJobDetails">
-    <h3>Sous Chef</h3>
+    <h3>Sous Chef {{id}}</h3>
     <h4>Qualifications</h4>
     <ul>
         <li>must have 2 years or more experience as SOUS CHEF in luxury cruise ships</li>

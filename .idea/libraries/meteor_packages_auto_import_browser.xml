@@ -122,6 +122,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_autoform/5.3.2/web.browser/packages/aldeed_autoform/templates/bootstrap3/inputTypes/select-checkbox-inline/select-checkbox-inline.css" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.1.9/web.browser/preamble.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/blaze_overrides.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/session/1.0.5/web.browser/packages/session.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.5/web.browser/code-generation.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.1.9/web.browser/domrange.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/dynamic_template.js" />
@@ -304,6 +305,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_autoform/5.3.2/web.browser/packages/aldeed_autoform/templates/bootstrap3/inputTypes/select-checkbox-inline/select-checkbox-inline.css" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.1.9/web.browser/preamble.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/blaze_overrides.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/session/1.0.5/web.browser/packages/session.js" />
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.5/web.browser/code-generation.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.1.9/web.browser/domrange.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_dynamic-template/1.0.12/web.browser/dynamic_template.js" />
