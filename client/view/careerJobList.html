@@ -18,8 +18,8 @@
                 <tbody>
                 {{#each vacancyPostList}}
                     <tr>
-                        <td>{{dateStart}}</td>
-                        <td>{{dateStart}}</td>
+                        <td>{{formatDate dateStart}}</td>
+                        <td>{{formatDate dateEnd}}</td>
                         <td>{{jobPosition}}</td>
                         <td>{{vesselType}}</td>
                         <td><a class="btn btn-primary btn-xs" href="cjd/{{jobPosition}}" role="button">View Details</a></td>

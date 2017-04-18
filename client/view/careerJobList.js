@@ -27,3 +27,8 @@ Template.careerJobList.helpers({
         return VacancyPost.find();
     }
 });
+
+Template.registerHelper('formatDate', function (inputDate) {
+    return moment(inputDate).format('YYYY-MMM-DD');
+});
+
