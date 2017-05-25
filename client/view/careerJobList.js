@@ -6,13 +6,23 @@ Router.route('/cjl',{
     template: 'careerJobList'
 });
 
-Router.route('/cjd/:_id', function(){
-    this.render('careerJobDetails',{
-        data: {
-            id: this.params._id
-        }
-    });
+// Router.route('/cjd/:_id', function(){
+//     this.render('careerJobDetails',{
+//         data: {
+//             id: this.params._id
+//         }
+//     });
+// });
+
+Router.route('/cjd/:_id', {
+    name: 'careerJobDetails',
+    template: 'careerJobDetails',
+    data: function(){
+        return JobPosition.findOne({_id: this.params._id});
+    }
+
 });
+
 
 
 Template.careerJobDetails.events({
@@ -25,6 +35,10 @@ Template.careerJobDetails.events({
 Template.careerJobList.helpers({
     vacancyPostList: function(){
         return VacancyPost.find();
+    },
+
+    findJobPosName: function(jpid){
+        //return JobPosition.findOne({_id: jpid});
     }
 });
 

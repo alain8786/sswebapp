@@ -6,7 +6,7 @@ Router.route('/recAJP',{
    template: 'recAddJobPosition'
 });
 
-Session.set('sJPID','');
+Session.set('sJPname','');
 
 AutoForm.hooks({
     recPostNewVacancyForm: {
@@ -40,8 +40,8 @@ Template.recPostNewVacancy.helpers({
         });
     },
 
-    jpid: function(){
-        return Session.get('sJPID');
+    jpname: function(){
+        return Session.get('sJPname');
 
     }
 });
@@ -49,10 +49,16 @@ Template.recPostNewVacancy.helpers({
 Template.recPostNewVacancy.events({
     'change .form-control': function (e) {
         e.preventDefault();
-        if (e.target.getAttribute('name') === 'jobPosition')
-            Session.set('sJPID',e.target.value);
-        console.log("pressed select " + e.target.value);
-    }
+        if (e.target.getAttribute('name') === 'jobPositionID'){
+            let rsName = JobPosition.findOne(
+                {_id: e.target.value},
+                {name: 1, _id: 0}
+            ).name;
+            Session.set('sJPname', rsName);
+            console.log("pressed select field " + e.target.value);
+        }
+        console.log("diff target " + e.target.value);
 
+    }
 
 });

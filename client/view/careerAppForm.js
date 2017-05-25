@@ -21,7 +21,7 @@ Router.route('/c',{
     template: 'careerAppForm'
 });
 
-
+Session.set('sAge','');
 
 /**
 Template.basicInfo.onRendered(function() {
@@ -54,6 +54,15 @@ Template.careerForm.events({
     }
 });
 
+// Template.careerForm.events({
+//     'click #btnSubmit': function (e){
+//         e.preventDefault();
+//         console.log("submit button pressed");
+//         Router.go('home');
+//     }
+//
+// });
+
 Template.careerAppForm.helpers({
     agControlNo: function () {
         return "24654sdfs";
@@ -65,17 +74,25 @@ Template.careerAppForm.helpers({
     },
 
     jobPositionOptions: function(){
-        return [
-            {label: "Sous Chef", value: "Sous Chef"},
-            {label: "Engine Repairman", value: "Engine Repairman"},
-            {label: "Laundryman", value: "Laundryman"}
-        ];
+        var jobPosID = Router.current().params.query.id;
+        var jobPos = JobPosition.findOne(
+            {_id: jobPosID},
+            {name: 1, _id: 0}
+        ) || {};
+
+        return jobPos.name;
+
+        // return [
+        //     {label: "Sous Chef", value: "Sous Chef"},
+        //     {label: "Engine Repairman", value: "Engine Repairman"},
+        //     {label: "Laundryman", value: "Laundryman"}
+        // ];
     },
 
     ageAutoCalc: function(){
         //return moment().format(Template.careerForm.dateOfBirth
-
-        return Math.floor(moment(new Date()).diff(moment("08/27/1986","MM/DD/YYYY"),'years',true));
+        //Session.set('sAge','08/27/1986');
+        return Math.floor(moment(new Date()).diff(moment(Session.get('sAge'),"MM/DD/YYYY"),'years',true));
 
     },
 
@@ -105,14 +122,18 @@ Template.careerAppForm.helpers({
 
 });
 
-// Template.careerForm.events({
-//     'click #btnSubmit': function (e){
-//         e.preventDefault();
-//         console.log("submit button pressed");
-//         Router.go('home');
-//     }
-//
-// });
+Template.careerAppForm.events({
+    'change .form-control': function (e) {
+        e.preventDefault();
+        if (e.target.getAttribute('name') === 'dateOfBirth'){
+            Session.set('sAge', moment(e.target.value).format('MM/DD/YYYY'));
+            console.log("sAge " + moment(e.target.value).format('MM/DD/YYYY'));
+        }
+        console.log("NOT sAge " + e.target.value);
+    }
+
+});
+
 
 AutoForm.hooks({
    careerAppForm: {

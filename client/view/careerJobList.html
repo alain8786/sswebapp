@@ -22,7 +22,7 @@
                         <td>{{formatDate dateEnd}}</td>
                         <td>{{jobPosition}}</td>
                         <td>{{vesselType}}</td>
-                        <td><a class="btn btn-primary btn-xs" href="cjd/{{jobPosition}}" role="button">View Details</a></td>
+                        <td><a class="btn btn-primary btn-xs" href="cjd/{{jobPositionID}}" role="button">View Details</a></td>
                     </tr>
                 {{/each}}
                 <tr>
@@ -48,7 +48,9 @@
 </template>
 
 <template name="careerJobDetails">
-    <h3>Sous Chef {{id}}</h3>
+    <h6>Job Position ID: {{_id}}</h6>
+    <h3>Job Position: {{name}}</h3>
+    <h4>Job Commitment: {{jobCommitment}}</h4>
     <h4>Qualifications</h4>
     <ul>
         <li>must have 2 years or more experience as SOUS CHEF in luxury cruise ships</li>
@@ -57,6 +59,7 @@
         <li>physically/medically fit</li>
     </ul>
 
-    <a class="btn btn-primary" href="{{pathFor route='c'}}"  role="button" id="btnApply">Apply</a>
+    <a class="btn btn-primary" href="{{pathFor route='c'}}/?id={{_id}}"  role="button" id="btnApply">Apply</a>
+    <a class="btn btn-primary" href="{{pathFor route='cjl'}}"  role="button" id="btnBack">Back</a>
 
 </template>

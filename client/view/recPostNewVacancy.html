@@ -7,10 +7,10 @@
             <div class="panel-body">
                 {{> afQuickField name="dateStart"}}
                 {{> afQuickField name="dateEnd"}}
-                {{> afQuickField name="jobPositionID" disabled=true value=jpid}}
-                {{> afQuickField name="jobPosition" options=jobPositionSelectList class=jp}}
+                {{> afQuickField name="jobPositionID" options=jobPositionSelectList}}
                 <a class="btn btn-primary" href="{{pathFor route='recAJP'}}" role="button">Add Job Position</a>
                 {{> afQuickField name="vesselType"}}
+                {{> afQuickField name="jobPosition" value=jpname}}
             </div>
 
             <div style="text-align: center;">
